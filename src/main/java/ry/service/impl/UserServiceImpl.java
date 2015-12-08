@@ -1,7 +1,6 @@
 package ry.service.impl;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ry.dao.UserMapper;
@@ -11,13 +10,13 @@ import ry.service.UserService;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 	
-//	@Resource
-//	private UserMapper userMapper;
+	@Autowired
+	private UserMapper userMapper;
 	
 	@Override
 	public User findUserById(String id) {
-		return null;
-		//return userMapper.selectByPrimaryKey(id);
+		//return null;
+		return userMapper.selectByPrimaryKey(id);
 	}
 	
 	public String getuserid(String id){

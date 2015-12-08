@@ -13,24 +13,16 @@ import ry.service.UserService;
 @ContextConfiguration(locations = { "classpath:spring.xml", "classpath:spring-mybatis.xml" })
 public class TestMybatis {
 	
-	
+	@Autowired
 	private UserService userService;
 	
 	@Test
 	public void test1(){
-		/*User u = getUserService().findUserById("1");
-		System.out.println(u.getName());*/
-		String s = userService.getuserid("1");
-		System.out.println(s);
+		User u = userService.findUserById("1");
+		System.out.println(u.getName());
+		/*String s = userService.getuserid("1");
+		System.out.println(s);*/
 	}
 
-	public UserService getUserService() {
-		return userService;
-	}
-
-	@Autowired
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
 
 }
