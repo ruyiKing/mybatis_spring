@@ -5,7 +5,7 @@
 	<artifactId>mybatis_spring</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mybatis_spring Maven Webapp</name>
+	<name>webapp Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<!-- spring版本号 -->
@@ -56,12 +56,19 @@
 			<version>1.2.3</version>
 		</dependency>
 
-
-
-
+		<!-- 阿里巴巴 数据源 druid -->
+		<!-- <dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.15</version>
+		</dependency> -->
+		
 
 	</dependencies>
+	
 	<build>
-		<finalName>mybaitis</finalName>
+		<finalName>mybatis_spring</finalName>
 	</build>
+	
+	  
 </project>
