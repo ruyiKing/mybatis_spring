@@ -14,7 +14,7 @@
 		<mybatis.version>3.3.0</mybatis.version>
 		<!-- log4j日志文件管理包版本 -->
 		<slf4j.version>1.7.7</slf4j.version>
-		<log4j.version>2.4.1</log4j.version>
+		<log4j.version>1.2.17</log4j.version>
 	</properties>
 
 	<dependencies>
@@ -36,13 +36,27 @@
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.7</version>
+		</dependency>
+		
+		
+ 
 
 		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
+
 		
 
 		<dependency>
@@ -54,14 +68,14 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.3</version>
-		</dependency>
+		</dependency> 
 
 		<!-- 阿里巴巴 数据源 druid -->
-		<!-- <dependency>
+		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>1.0.15</version>
-		</dependency> -->
+		</dependency> 
 		
 
 	</dependencies>
