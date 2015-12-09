@@ -7,7 +7,7 @@ import ry.dao.UserMapper;
 import ry.model.User;
 import ry.service.UserService;
 
-@Service("userService")
+@Service
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
