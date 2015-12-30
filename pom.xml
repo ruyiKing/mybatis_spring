@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>mybatis_spring</groupId>
 	<artifactId>mybatis_spring</artifactId>
-	<packaging>maven-plugin</packaging>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>webapp Maven Webapp</name>
 	<url>http://maven.apache.org</url>
