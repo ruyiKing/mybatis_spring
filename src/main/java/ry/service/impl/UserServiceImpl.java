@@ -1,9 +1,9 @@
 package ry.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.sun.tools.javac.util.List;
 
 import ry.dao.UserMapper;
 import ry.model.User;
