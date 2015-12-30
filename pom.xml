@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>mybatis_spring</groupId>
 	<artifactId>mybatis_spring</artifactId>
-	<packaging>war</packaging>
+	<packaging>maven-plugin</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>webapp Maven Webapp</name>
 	<url>http://maven.apache.org</url>
@@ -86,6 +86,11 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.7</version>
 		</dependency>
 
 		

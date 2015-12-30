@@ -3,6 +3,8 @@ package ry.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sun.tools.javac.util.List;
+
 import ry.dao.UserMapper;
 import ry.model.User;
 import ry.service.UserService;
@@ -22,6 +24,11 @@ public class UserServiceImpl implements UserService {
 	public String getuserid(String id){
 		System.out.println(id);
 		return id;
+	}
+
+	@Override
+	public List<User> getAll() {
+		return userMapper.getAll();
 	}
 
 
