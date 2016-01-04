@@ -11,4 +11,6 @@ public interface UserService {
 	public String getuserid(String id);
 	
 	List<User> getAll() ;
+
+	List<User> getAll2();
 }

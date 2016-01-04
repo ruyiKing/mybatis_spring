@@ -31,6 +31,11 @@ public class UserServiceImpl implements UserService {
 		return userMapper.getAll();
 	}
 
+	@Override
+	public List<User> getAll2() {
+		return userMapper.getAll2();
+	}
+
 
 
 

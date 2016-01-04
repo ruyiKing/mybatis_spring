@@ -121,4 +121,34 @@
   <select id="getAll" resultMap="userResultMap">
   select * from tuser
   </select>
+  
+  <select id="getAll2" resultMap="userResultMap2">
+	  select
+		tuser.id,
+		tuser.createdatetime,
+		tuser.name,
+		tuser.pwd,
+		tuser.create_time,
+		tuser.update_time,
+		tuser_trole.id tuser_trole_id,
+		tuser_trole.role_id role_id,
+		tuser_trole.user_id user_id,
+		trole.id trole_id,
+		trole.text trole_text
+	from
+		tuser
+	inner join tuser_trole on tuser_trole.user_id = tuser.id
+	inner join trole on tuser_trole.role_id = trole.id
+  </select>
+  <resultMap type="ry.model.User" id="userResultMap2" extends="BaseResultMap">
+  	<collection property="userRoles" javaType="list" ofType="ry.model.UserRole">
+  		<id property="id" column="tuser_trole_id"/>
+  		<result property="roleId" column="role_id"/>
+  		<result property="userId" column="user_id"/>
+  		<association property="role" javaType="ry.model.Role">
+  			<id property="id" column="trole_id"/>
+  			<result property="text" column="trole_text"/>
+  		</association>
+  	</collection>
+  </resultMap>
 </mapper>
