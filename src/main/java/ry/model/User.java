@@ -1,6 +1,7 @@
 package ry.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
     private String id;
@@ -14,8 +15,18 @@ public class User {
     private Date createTime;
 
     private Date updateTime;
+    
+    private List<UserRole> userRoles;
 
-    public String getId() {
+    public List<UserRole> getUserRoles() {
+		return userRoles;
+	}
+
+	public void setUserRoles(List<UserRole> userRoles) {
+		this.userRoles = userRoles;
+	}
+
+	public String getId() {
         return id;
     }
 

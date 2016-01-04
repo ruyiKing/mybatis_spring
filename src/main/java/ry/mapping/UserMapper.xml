@@ -104,7 +104,21 @@
     where ID = #{id,jdbcType=VARCHAR}
   </update>
   
-  <select id="getAll" resultMap="BaseResultMap">
+  <select id="selectUserRole" parameterType="String" resultType="ry.model.UserRole">
+  select
+		tuser_trole. id,
+		tuser_trole.role_id,
+		tuser_trole.user_id
+	from
+		tuser_trole
+	where TUSER_TROLE.user_id =#{id,jdbcType=VARCHAR} 
+  </select>
+  
+  <resultMap id="userResultMap" type="ry.model.User" extends="BaseResultMap" >
+    <collection property="userRoles" column="ID" javaType="list" select="selectUserRole"></collection>
+  </resultMap>
+  
+  <select id="getAll" resultMap="userResultMap">
   select * from tuser
   </select>
 </mapper>
