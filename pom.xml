@@ -117,6 +117,15 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
+		
+		<!-- 
+			mvn install:install-file -Dfile=D:/workspace-sts/mybatis_spring/src/main/webapp/WEB-INF/lib/ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar 
+		--> 
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0</version>
+		</dependency>
 
 	</dependencies>
 	

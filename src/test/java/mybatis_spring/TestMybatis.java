@@ -41,17 +41,17 @@ public class TestMybatis {
 		logger.info(JSON.toJSONStringWithDateFormat(list, "yyyy-MM-dd"));
 	}
 	
-	@Test
-	public void test3() {
-		for(int i=1;i<=5;i++){
-			UserRole userRole = new UserRole();
-			userRole.setId(String.valueOf(i));
-			userRole.setRoleId("1");
-			userRole.setUserId("1");
-			userRoleService.addUserRole(userRole);
-			
-		}
-	}
+//	@Test
+//	public void test3addUserRole() {
+//		for(int i=1;i<=5;i++){
+//			UserRole userRole = new UserRole();
+//			userRole.setId(String.valueOf(i));
+//			userRole.setRoleId("1");
+//			userRole.setUserId("1");
+//			userRoleService.addUserRole(userRole);
+//			
+//		}
+//	}
 	
 	@Test
 	public void test4() {
