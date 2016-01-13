@@ -3,9 +3,9 @@ package ry.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import UserRole.UserRoleService;
 import ry.dao.UserRoleMapper;
 import ry.model.UserRole;
+import ry.service.UserRoleService;
 
 @Service
 public class UserRoleServiceImpl implements UserRoleService {

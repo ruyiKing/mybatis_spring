@@ -11,9 +11,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.alibaba.fastjson.JSON;
 
-import UserRole.UserRoleService;
 import ry.model.User;
 import ry.model.UserRole;
+import ry.service.UserRoleService;
 import ry.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)

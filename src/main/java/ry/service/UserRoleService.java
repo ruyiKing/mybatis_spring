@@ -1,4 +1,4 @@
-package UserRole;
+package ry.service;
 
 import ry.model.UserRole;
 
