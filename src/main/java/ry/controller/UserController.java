@@ -16,7 +16,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/showUser")
+	@RequestMapping("/showUser.do")
 	public String showUser(String id,HttpServletRequest request) {
 		User u = userService.findUserById(id);
 		request.setAttribute("user", u);
