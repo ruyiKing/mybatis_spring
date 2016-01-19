@@ -22,13 +22,13 @@
     </div>
         
     <table id="dg" title="用户列表" class="easyui-datagrid" style="width:100%;height:250px"
-            url="get_users.php"
+            url="<%=request.getContextPath() %>/userController/userList.do"
             toolbar="#toolbar" pagination="true"
             rownumbers="true" fitColumns="true" singleSelect="true">
         <thead>
             <tr>
-                <th field="firstname" width="50">序号</th>
-                <th field="lastname" width="50">用户名</th>
+                <th field="id" width="50">序号</th>
+                <th field="name" width="50">用户名</th>
                 <th field="pwd" width="50">密码</th>
                 <th field="createtime" width="50">创建日期</th>
                 <th field="updatetime" width="50">更新日期</th>

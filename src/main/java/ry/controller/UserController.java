@@ -1,12 +1,17 @@
 package ry.controller;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.alibaba.druid.support.logging.Log;
+import com.alibaba.fastjson.JSONArray;
 
 import ry.model.User;
 import ry.service.UserService;
@@ -14,6 +19,7 @@ import ry.service.UserService;
 @Controller
 @RequestMapping("/userController")
 public class UserController {
+	private static final Logger logger = Logger.getLogger(UserController.class) ;
 
 	@Autowired
 	private UserService userService;
@@ -29,6 +35,9 @@ public class UserController {
 	public String userList(String id,HttpServletRequest request) {
 		List<User> userList=userService.getAll2();
 		request.setAttribute("userList", userList);
+		String jsonArray = JSONArray.toJSONString(userList);
+		logger.info(jsonArray.toString());  
+		request.setAttribute("jsonArray", jsonArray);
 		return "/jsp/user/userList";
 	}
 }
