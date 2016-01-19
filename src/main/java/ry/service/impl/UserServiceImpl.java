@@ -17,7 +17,6 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User findUserById(String id) {
-		//return null;
 		return userMapper.selectByPrimaryKey(id);
 	}
 	

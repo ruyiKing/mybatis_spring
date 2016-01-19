@@ -3,14 +3,13 @@
 <mapper namespace="ry.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="ry.model.User" >
     <id column="ID" property="id" jdbcType="VARCHAR" />
-    <result column="CREATEDATETIME" property="createdatetime" jdbcType="TIMESTAMP" />
     <result column="NAME" property="name" jdbcType="VARCHAR" />
     <result column="PWD" property="pwd" jdbcType="VARCHAR" />
     <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
     <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, CREATEDATETIME, NAME, PWD, CREATE_TIME, UPDATE_TIME
+    ID, NAME, PWD, CREATE_TIME, UPDATE_TIME
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -23,10 +22,10 @@
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="ry.model.User" >
-    insert into TUSER (ID, CREATEDATETIME, NAME, 
+    insert into TUSER (ID, NAME, 
       PWD, CREATE_TIME, UPDATE_TIME
       )
-    values (#{id,jdbcType=VARCHAR}, #{createdatetime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
       #{pwd,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -35,9 +34,6 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         ID,
-      </if>
-      <if test="createdatetime != null" >
-        CREATEDATETIME,
       </if>
       <if test="name != null" >
         NAME,
@@ -56,9 +52,6 @@
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="createdatetime != null" >
-        #{createdatetime,jdbcType=TIMESTAMP},
-      </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
@@ -76,9 +69,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="ry.model.User" >
     update TUSER
     <set >
-      <if test="createdatetime != null" >
-        CREATEDATETIME = #{createdatetime,jdbcType=TIMESTAMP},
-      </if>
       <if test="name != null" >
         NAME = #{name,jdbcType=VARCHAR},
       </if>
@@ -96,8 +86,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="ry.model.User" >
     update TUSER
-    set CREATEDATETIME = #{createdatetime,jdbcType=TIMESTAMP},
-      NAME = #{name,jdbcType=VARCHAR},
+    set NAME = #{name,jdbcType=VARCHAR},
       PWD = #{pwd,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
@@ -125,7 +114,6 @@
   <select id="getAll2" resultMap="userResultMap2">
 	  select
 		tuser.id,
-		tuser.createdatetime,
 		tuser.name,
 		tuser.pwd,
 		tuser.create_time,

@@ -6,8 +6,6 @@ import java.util.List;
 public class User {
     private String id;
 
-    private Date createdatetime;
-
     private String name;
 
     private String pwd;
@@ -32,14 +30,6 @@ public class User {
 
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
-    }
-
-    public Date getCreatedatetime() {
-        return createdatetime;
-    }
-
-    public void setCreatedatetime(Date createdatetime) {
-        this.createdatetime = createdatetime;
     }
 
     public String getName() {
