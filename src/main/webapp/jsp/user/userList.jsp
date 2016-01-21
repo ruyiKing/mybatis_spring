@@ -14,6 +14,9 @@
 </head>
 <body>
 <h2>用户列表</h2>
+<div style="margin:20px 0;text-align: right;">
+	<input class="easyui-searchbox" data-options="prompt:'Please Input Value',searcher:doSearch" style="width:300px;"></input>
+</div>
 
 	<div id="toolbar">
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">新建用户</a>
@@ -56,6 +59,11 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
     </div>
     <script type="text/javascript">
+	    
+    	function doSearch(value){
+	        alert('You input: ' + value);
+	    }
+
         var url;
         function newUser(){
             $('#dlg').dialog('open').dialog('center').dialog('setTitle','New User');
