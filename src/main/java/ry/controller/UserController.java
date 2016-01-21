@@ -32,10 +32,15 @@ public class UserController {
 	}
 	
 	@RequestMapping("/userList.do")
-	public String userList(String id,HttpServletRequest request) {
-		List<User> userList=userService.getAll2();
-		request.setAttribute("userList", userList);
-		String jsonArray = JSONArray.toJSONString(userList);
+	public String userList() {
+		return "/jsp/user/userList";
+	}
+	
+	@RequestMapping("/finduserList.do")
+	public String finduserList(String id,HttpServletRequest request) {
+		List<User> finduserList=userService.getAll2();
+		request.setAttribute("finduserList", finduserList);
+		String jsonArray = JSONArray.toJSONString(finduserList);
 		logger.info(jsonArray.toString());  
 		request.setAttribute("jsonArray", jsonArray);
 		return "/jsp/user/userList";
