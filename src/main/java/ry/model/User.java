@@ -63,4 +63,8 @@ public class User {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+    
+    public String toString() {
+        return getClass().getName() + ":" + name;
+    }
 }

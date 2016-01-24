@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>用户列表</title>
-<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
+	<meta charset="UTF-8">
+	<title>用户列表</title>
+	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="/js/easyui-1.4.4/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="/js/easyui-1.4.4/themes/color.css">
     <link rel="stylesheet" type="text/css" href="/js/easyui-1.4.4/demo/demo.css">
@@ -25,7 +25,7 @@
     </div>
         
     <table id="dg" title="用户列表" class="easyui-datagrid" style="width:100%;height:250px"
-            url="<%=request.getContextPath() %>/userController/userList.do"
+            url="<%=request.getContextPath() %>/user/finduserList.do"
             toolbar="#toolbar" pagination="true"
             rownumbers="true" fitColumns="true" singleSelect="true">
         <thead>
@@ -33,12 +33,12 @@
                 <th field="id" width="50">序号</th>
                 <th field="name" width="50">用户名</th>
                 <th field="pwd" width="50">密码</th>
-                <th field="createtime" width="50">创建日期</th>
-                <th field="updatetime" width="50">更新日期</th>
+                <th field="createTime" width="50">创建日期</th>
+                <th field="updateTime" width="50">更新日期</th>
             </tr>
         </thead>
     </table>
-    
+   
     
     <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
             closed="true" buttons="#dlg-buttons">
@@ -62,6 +62,7 @@
 	    
     	function doSearch(value){
 	        alert('You input: ' + value);
+	        $('#dg').datagrid('reload'); 
 	    }
 
         var url;
@@ -141,5 +142,7 @@
             width:160px;
         }
     </style>
+    <p>111:${jsonArray}</p>
+    <p>${user}</p>
 </body>
 </html>
