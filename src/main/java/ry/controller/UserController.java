@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.LookAndFeel;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
 
 import ry.model.User;
 import ry.service.UserService;
@@ -44,7 +42,7 @@ public class UserController {
 	@ResponseBody
 	public Object finduserList(HttpServletRequest request,HttpServletResponse response) {
 //		Map<String, Object> data = new HashMap<String, Object>(2);   
-		List<User> finduserList=userService.getAll2();
+		List<User> finduserList=userService.getAll();
 //		request.setAttribute("finduserList", finduserList);
 //		String jsonArray = JSONArray.toJSONString(finduserList);
 //		logger.info("返回JSON："+jsonArray.toString());  
@@ -65,7 +63,7 @@ public class UserController {
 //		request.setAttribute("user", u);
 //		data.put("total", finduserList.size());  
 //		data.put("rows",jsonArray) ;
-		String jsonArray = JSONArray.toJSONString(finduserList);
+		String jsonArray = JSONArray.toJSONStringWithDateFormat(finduserList , "yyyy-MM-dd");
 		logger.info("jsonArray= = >:"+jsonArray);
         return JSONObject.parseArray(jsonArray); 
 

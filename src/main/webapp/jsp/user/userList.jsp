@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/js/easyui-1.4.4/demo/demo.css">
     <script type="text/javascript" src="/js/jquery1.11.3.min.js"></script>
     <script type="text/javascript" src="/js/easyui-1.4.4/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/js/easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 </head>
 <body>
 <h2>用户列表</h2>
@@ -24,7 +25,7 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除用户</a>
     </div>
         
-    <table id="dg" title="用户列表" class="easyui-datagrid" style="width:100%;height:250px"
+    <table id="dg" title="用户列表" class="easyui-datagrid" style="width:100%;height:350px"
             url="<%=request.getContextPath() %>/user/finduserList.do"
             toolbar="#toolbar" pagination="true"
             rownumbers="true" fitColumns="true" singleSelect="true">
@@ -32,7 +33,7 @@
             <tr>
                 <th field="id" width="50">序号</th>
                 <th field="name" width="50">用户名</th>
-                <th field="pwd" width="50">密码</th>
+                <th field="login_name" width="50">登录名</th>
                 <th field="createTime" width="50">创建日期</th>
                 <th field="updateTime" width="50">更新日期</th>
             </tr>
@@ -40,23 +41,26 @@
     </table>
    
     
-    <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
-            closed="true" buttons="#dlg-buttons">
-        <div class="ftitle">User Information</div>
+    <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"  closed="true" buttons="#dlg-buttons">
+        <div class="ftitle">用户信息</div>
         <form id="fm" method="post" novalidate>            
             <div class="fitem">
                 <label>用户名:</label>
-                <input name="lastname" class="easyui-textbox" required="true">
+                <input name="name" class="easyui-textbox" required="true">
+            </div>
+            <div class="fitem">
+                <label>登录名:</label>
+                <input name="login_name" class="easyui-textbox" required="true">
             </div>
             <div class="fitem">
                 <label>密码:</label>
-                <input name="pwd" class="easyui-textbox">
+                <input name="pwd" class="easyui-textbox" required="true">
             </div>
         </form>
     </div>
     <div id="dlg-buttons">
-        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()" style="width:90px">Save</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()" style="width:90px">保存</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">取消</a>
     </div>
     <script type="text/javascript">
 	    
@@ -67,14 +71,14 @@
 
         var url;
         function newUser(){
-            $('#dlg').dialog('open').dialog('center').dialog('setTitle','New User');
+            $('#dlg').dialog('open').dialog('center').dialog('setTitle','新建用户');
             $('#fm').form('clear');
             url = 'save_user.php';
         }
         function editUser(){
             var row = $('#dg').datagrid('getSelected');
             if (row){
-                $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit User');
+                $('#dlg').dialog('open').dialog('center').dialog('setTitle','编辑用户');
                 $('#fm').form('load',row);
                 url = 'update_user.php?id='+row.id;
             }
@@ -142,7 +146,6 @@
             width:160px;
         }
     </style>
-    <p>111:${jsonArray}</p>
-    <p>${user}</p>
+    
 </body>
 </html>

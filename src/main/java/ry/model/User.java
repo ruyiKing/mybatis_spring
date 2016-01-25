@@ -5,6 +5,8 @@ import java.util.List;
 
 public class User {
     private String id;
+    
+    private String login_name;
 
     private String name;
 
@@ -64,7 +66,17 @@ public class User {
         this.updateTime = updateTime;
     }
     
-    public String toString() {
+	public String getLogin_name() {
+		return login_name;
+	}
+
+	public void setLogin_name(String login_name) {
+		this.login_name = login_name;
+	}
+	
+	
+	public String toString() {
         return getClass().getName() + ":" + name;
     }
+
 }

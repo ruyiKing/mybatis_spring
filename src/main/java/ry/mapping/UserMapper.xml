@@ -3,6 +3,7 @@
 <mapper namespace="ry.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="ry.model.User" >
     <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="LOGIN_NAME" property="login_name" jdbcType="VARCHAR"/>
     <result column="NAME" property="name" jdbcType="VARCHAR" />
     <result column="PWD" property="pwd" jdbcType="VARCHAR" />
     <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
@@ -22,10 +23,10 @@
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="ry.model.User" >
-    insert into TUSER (ID, NAME, 
+    insert into TUSER (ID,LOGIN_NAME, NAME, 
       PWD, CREATE_TIME, UPDATE_TIME
       )
-    values (#{id,jdbcType=VARCHAR}, #{jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, (#{login_name,jdbcType=VARCHAR}, #{jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
       #{pwd,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -34,6 +35,9 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         ID,
+      </if>
+      <if test="login_name != null" >
+        LOGIN_NAME,
       </if>
       <if test="name != null" >
         NAME,
@@ -52,6 +56,9 @@
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
+      <if test="login_name != null" >
+        #{login_name,jdbcType=VARCHAR},
+      </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
@@ -69,6 +76,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="ry.model.User" >
     update TUSER
     <set >
+      <if test="login_name != null" >
+        LOGIN_NAME = #{login_name,jdbcType=VARCHAR},
+      </if>
       <if test="name != null" >
         NAME = #{name,jdbcType=VARCHAR},
       </if>
@@ -86,7 +96,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="ry.model.User" >
     update TUSER
-    set NAME = #{name,jdbcType=VARCHAR},
+    set LOGIN_NAME = #{login_name,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
       PWD = #{pwd,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
@@ -114,6 +125,7 @@
   <select id="getAll2" resultMap="userResultMap2">
 	  select
 		tuser.id,
+		tuser.login_name
 		tuser.name,
 		tuser.pwd,
 		tuser.create_time,
