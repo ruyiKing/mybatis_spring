@@ -1,5 +1,6 @@
 package ry.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,28 +42,14 @@ public class UserController {
 	@RequestMapping("/finduserList.do")
 	@ResponseBody
 	public Object finduserList(HttpServletRequest request,HttpServletResponse response) {
-//		Map<String, Object> data = new HashMap<String, Object>(2);   
-		List<User> finduserList=userService.getAll();
-//		request.setAttribute("finduserList", finduserList);
-//		String jsonArray = JSONArray.toJSONString(finduserList);
-//		logger.info("返回JSON："+jsonArray.toString());  
-//		request.setAttribute("jsonArray", jsonArray);
-//		data.put("rows", jsonArray);  
-//		JSONArray jsonArray = new JSONArray();
-//		for(User user:finduserList){  
-//	         JSONObject jsonObject = new JSONObject();  
-//	         jsonObject.put("id",user.getId()) ;  
-//	         jsonObject.put("name",user.getName());  
-//	         jsonObject.put("createTime", user.getCreateTime());  
-//	         jsonObject.put("updateTime",user.getUpdateTime());  
-//	         jsonArray.add(jsonObject) ;  
-//    	}  
-//
-//		
-//		User u = userService.findUserById("1");
-//		request.setAttribute("user", u);
-//		data.put("total", finduserList.size());  
-//		data.put("rows",jsonArray) ;
+		List<User> finduserList= new ArrayList<User>();
+		String userName = request.getParameter("name");
+		if(userName!=null && userName!=""){
+			finduserList=userService.findUserByName(userName);
+		}else {
+			finduserList=userService.getAll();
+		}
+
 		String jsonArray = JSONArray.toJSONStringWithDateFormat(finduserList , "yyyy-MM-dd");
 		logger.info("jsonArray= = >:"+jsonArray);
         return JSONObject.parseArray(jsonArray); 

@@ -20,4 +20,6 @@ public interface UserMapper {
 	List<User> getAll();
 
 	List<User> getAll2();
+
+	List<User> selectByParameter(String userName);
 }

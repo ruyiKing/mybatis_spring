@@ -13,11 +13,14 @@
     <script type="text/javascript" src="/js/easyui-1.4.4/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="/js/easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 </head>
-<body>
-<h2>用户列表</h2>
-<div style="margin:20px 0;text-align: right;">
-	<input class="easyui-searchbox" data-options="prompt:'Please Input Value',searcher:doSearch" style="width:300px;"></input>
-</div>
+<body class="easyui-layout" title="用户列表"  style="width:100%;height:100%;padding:10px;">
+<div region="north" split="false" style="height:100px;text-align: center;" border="false">  
+            <h1>欢迎： ${userSessionInfo.name}</h1>  
+        </div>
+<!-- style="margin:20px 0;text-align: right;" -->
+	<div style="margin-bottom: 50px" >
+		<input class="easyui-searchbox" data-options="prompt:'用户名',searcher:doSearch" id="queryName" style="width:300px;"></input>
+	</div>
 
 	<div id="toolbar">
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">新建用户</a>
@@ -25,7 +28,7 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除用户</a>
     </div>
         
-    <table id="dg" title="用户列表" class="easyui-datagrid" style="width:100%;height:350px"
+    <table id="dg" title="用户列表" class="easyui-datagrid" style="width:100%;height:350px;"
             url="<%=request.getContextPath() %>/user/finduserList.do"
             toolbar="#toolbar" pagination="true"
             rownumbers="true" fitColumns="true" singleSelect="true">
@@ -65,8 +68,12 @@
     <script type="text/javascript">
 	    
     	function doSearch(value){
-	        alert('You input: ' + value);
-	        $('#dg').datagrid('reload'); 
+    		var queryName = $("#queryName").val();
+			var url = "/user/finduserList.do";
+			alert(queryName);
+			$.post(url, {"name":queryName}, function(data){
+				
+			},"json" )
 	    }
 
         var url;
