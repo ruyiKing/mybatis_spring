@@ -13,13 +13,15 @@
     <script type="text/javascript" src="/js/easyui-1.4.4/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="/js/easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 </head>
-<body class="easyui-layout" title="用户列表"  style="width:100%;height:100%;padding:10px;">
-<div region="north" split="false" style="height:100px;text-align: center;" border="false">  
-            <h1>欢迎： ${userSessionInfo.name}</h1>  
-        </div>
+<body class="easyui-layout" title="用户列表"  style="width:100%;height:100%;">
+
 <!-- style="margin:20px 0;text-align: right;" -->
-	<div style="margin-bottom: 50px" >
-		<input class="easyui-searchbox" data-options="prompt:'用户名',searcher:doSearch" id="queryName" style="width:300px;"></input>
+	<div style="margin-bottom: 50px;margin-top: 50px;text-align: right" >
+		<form action="<%=request.getContextPath() %>/user/finduserList.do" method="post" id="queryForm" name="queryForm">
+			<table>
+				<input class="easyui-searchbox" data-options="prompt:'用户名',searcher:doSearch" id="queryName" style="width:300px;"></input>
+			</table>
+		</form>
 	</div>
 
 	<div id="toolbar">
@@ -69,11 +71,12 @@
 	    
     	function doSearch(value){
     		var queryName = $("#queryName").val();
-			var url = "/user/finduserList.do";
-			alert(queryName);
-			$.post(url, {"name":queryName}, function(data){
-				
-			},"json" )
+    		var params = $('#dg').datagrid('options').queryParams; //先取得 datagrid 的查询参数  
+            var fields =$('#queryForm').serializeArray(); //自动序列化表单元素为JSON对象  
+            $.each( fields, function(i, field){  
+                params[field.name] = field.value; //设置查询参数  
+            });   
+            $('#dg').datagrid('reload'); //设置好查询参数 reload 一下就可以了  
 	    }
 
         var url;

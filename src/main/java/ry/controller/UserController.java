@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import ry.model.User;
 import ry.service.UserService;
+import ry.util.DataGridModel;
 
 @Controller
 @RequestMapping("/user")
@@ -41,9 +42,11 @@ public class UserController {
 	
 	@RequestMapping("/finduserList.do")
 	@ResponseBody
-	public Object finduserList(HttpServletRequest request,HttpServletResponse response) {
+	public Object finduserList(HttpServletRequest request,HttpServletResponse response,DataGridModel dgm) {
 		List<User> finduserList= new ArrayList<User>();
-		String userName = request.getParameter("name");
+//		String userName = request.getParameter("name");
+		String userName = "赵四";
+		logger.info("+++++查询条件userName："+userName);
 		if(userName!=null && userName!=""){
 			finduserList=userService.findUserByName(userName);
 		}else {
