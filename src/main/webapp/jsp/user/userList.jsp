@@ -13,13 +13,14 @@
     <script type="text/javascript" src="/js/easyui-1.4.4/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="/js/easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 </head>
-<body class="easyui-layout" title="用户列表"  style="width:100%;height:100%;">
+<body class="easyui-layout" title="用户列表"  style="margin: 20px;">
 
 <!-- style="margin:20px 0;text-align: right;" -->
-	<div style="margin-bottom: 50px;margin-top: 50px;text-align: right" >
+	<div style="margin-bottom: 50px;margin-top: 50px;" >
 		<form action="<%=request.getContextPath() %>/user/finduserList.do" method="post" id="queryForm" name="queryForm">
 			<table>
-				<input class="easyui-searchbox" data-options="prompt:'用户名',searcher:doSearch" id="queryName" style="width:300px;"></input>
+				<input type="text" name="queryUserName" id="queryUserName"  style="margin: 20px;" class="easyui-textbox" value="">
+				<a href="#" id="onclick" style="margin: 20px;" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px" onclick="doSearch()">Search</a>
 			</table>
 		</form>
 	</div>
@@ -68,9 +69,16 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">取消</a>
     </div>
     <script type="text/javascript">
+    
+	    $(function(){
+	    	$('#queryUserName').textbox('textbox').keydown(function (e) {
+                if (e.keyCode == 13) {
+                	doSearch();
+                }
+            });
+	    });
 	    
     	function doSearch(value){
-    		var queryName = $("#queryName").val();
     		var params = $('#dg').datagrid('options').queryParams; //先取得 datagrid 的查询参数  
             var fields =$('#queryForm').serializeArray(); //自动序列化表单元素为JSON对象  
             $.each( fields, function(i, field){  
