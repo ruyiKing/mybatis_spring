@@ -1,5 +1,6 @@
 package mybatis_spring;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -52,6 +53,22 @@ public class TestMybatis {
 //			
 //		}
 //	}
+	@Test
+	public void addUser() {
+		int c = 0;
+		for(int i = 3;i<=10000;i++){
+			User user = new User();
+			user.setId(String.valueOf(i));
+			user.setName("赵"+String.valueOf(i));
+			user.setLogin_name("zhao"+String.valueOf(i));
+			user.setPwd("123456");
+			user.setUpdateTime(new Date());
+			user.setCreateTime(new Date());
+			int iuser = userService.addUsers(user);
+			c += iuser;
+		}
+		logger.info("插入"+c+"个用户。");
+	}
 	
 	@Test
 	public void test4() {

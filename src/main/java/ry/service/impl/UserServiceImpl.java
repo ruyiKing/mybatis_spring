@@ -40,6 +40,11 @@ public class UserServiceImpl implements UserService {
 		return userMapper.selectByParameter(userName);
 	}
 
+	@Override
+	public int addUsers(User user) {
+		return userMapper.insert(user);
+	}
+
 
 
 

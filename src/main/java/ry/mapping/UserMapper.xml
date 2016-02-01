@@ -34,7 +34,7 @@
     insert into TUSER (ID,LOGIN_NAME, NAME, 
       PWD, CREATE_TIME, UPDATE_TIME
       )
-    values (#{id,jdbcType=VARCHAR}, (#{login_name,jdbcType=VARCHAR}, #{jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{login_name,jdbcType=VARCHAR},  #{name,jdbcType=VARCHAR}, 
       #{pwd,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>

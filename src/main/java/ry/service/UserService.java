@@ -15,4 +15,6 @@ public interface UserService {
 	List<User> getAll2();
 
 	List<User> findUserByName(String userName);
+
+	int addUsers(User user);
 }
