@@ -3,7 +3,7 @@ package ry.model;
 import java.util.Date;
 
 public class Online {
-    private String id;
+    private Long id;
 
     private String ip;
 
@@ -11,12 +11,12 @@ public class Online {
 
     private String loginname;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getIp() {

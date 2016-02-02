@@ -16,11 +16,11 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 	
 	@Override
-	public User findUserById(String id) {
+	public User findUserById(Long id) {
 		return userMapper.selectByPrimaryKey(id);
 	}
 	
-	public String getuserid(String id){
+	public Long getuserid(Long id){
 		System.out.println(id);
 		return id;
 	}

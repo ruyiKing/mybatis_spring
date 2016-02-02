@@ -3,13 +3,13 @@ package ry.dao;
 import ry.model.Bug;
 
 public interface BugMapper {
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Bug record);
 
     int insertSelective(Bug record);
 
-    Bug selectByPrimaryKey(String id);
+    Bug selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(Bug record);
 

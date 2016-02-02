@@ -3,7 +3,15 @@ package ry.dao;
 import ry.model.UserRole;
 
 public interface UserRoleMapper {
-    int insert(UserRole userRole);
+    int deleteByPrimaryKey(Long id);
+
+    int insert(UserRole record);
 
     int insertSelective(UserRole record);
+
+    UserRole selectByPrimaryKey(Long id);
+
+    int updateByPrimaryKeySelective(UserRole record);
+
+    int updateByPrimaryKey(UserRole record);
 }

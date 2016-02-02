@@ -28,7 +28,7 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping("/showUser.do")
-	public String showUser(String id,HttpServletRequest request) {
+	public String showUser(Long id,HttpServletRequest request) {
 		User u = userService.findUserById(id);
 		request.setAttribute("user", u);
 		return "showUser";

@@ -3,13 +3,13 @@ package ry.dao;
 import ry.model.Role;
 
 public interface RoleMapper {
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Role record);
 
     int insertSelective(Role record);
 
-    Role selectByPrimaryKey(String id);
+    Role selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(Role record);
 

@@ -6,9 +6,9 @@ import ry.model.User;
 
 public interface UserService {
 	
-	User findUserById(String id);
+	User findUserById(Long id);
 	
-	public String getuserid(String id);
+	public Long getuserid(Long id);
 	
 	List<User> getAll() ;
 

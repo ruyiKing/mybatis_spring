@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="ry.dao.ResourceMapper" >
   <resultMap id="BaseResultMap" type="ry.model.Resource" >
-    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <id column="ID" property="id" jdbcType="DECIMAL" />
     <result column="SEQ" property="seq" jdbcType="DECIMAL" />
     <result column="TEXT" property="text" jdbcType="VARCHAR" />
     <result column="URL" property="url" jdbcType="VARCHAR" />
@@ -11,20 +11,20 @@
   <sql id="Base_Column_List" >
     ID, SEQ, TEXT, URL, PID
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from TRESOURCE
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from TRESOURCE
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="ry.model.Resource" >
     insert into TRESOURCE (ID, SEQ, TEXT, 
       URL, PID)
-    values (#{id,jdbcType=VARCHAR}, #{seq,jdbcType=DECIMAL}, #{text,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=DECIMAL}, #{seq,jdbcType=DECIMAL}, #{text,jdbcType=VARCHAR}, 
       #{url,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="ry.model.Resource" >
@@ -48,7 +48,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
+        #{id,jdbcType=DECIMAL},
       </if>
       <if test="seq != null" >
         #{seq,jdbcType=DECIMAL},
@@ -80,7 +80,7 @@
         PID = #{pid,jdbcType=VARCHAR},
       </if>
     </set>
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="ry.model.Resource" >
     update TRESOURCE
@@ -88,6 +88,6 @@
       TEXT = #{text,jdbcType=VARCHAR},
       URL = #{url,jdbcType=VARCHAR},
       PID = #{pid,jdbcType=VARCHAR}
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
 </mapper>

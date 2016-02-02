@@ -2,21 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="ry.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="ry.model.User" >
-    <id column="ID" property="id" jdbcType="VARCHAR" />
-    <result column="LOGIN_NAME" property="login_name" jdbcType="VARCHAR"/>
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
     <result column="NAME" property="name" jdbcType="VARCHAR" />
     <result column="PWD" property="pwd" jdbcType="VARCHAR" />
     <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
     <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, NAME, PWD, CREATE_TIME, UPDATE_TIME
+    ID, LOGIN_NAME, NAME, PWD, CREATE_TIME, UPDATE_TIME
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from TUSER
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </select>
   
   <select id="selectByParameter" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -28,13 +28,13 @@
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from TUSER
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="ry.model.User" >
-    insert into TUSER (ID,LOGIN_NAME, NAME, 
+    insert into TUSER (ID, LOGIN_NAME, NAME, 
       PWD, CREATE_TIME, UPDATE_TIME
       )
-    values (#{id,jdbcType=VARCHAR}, #{login_name,jdbcType=VARCHAR},  #{name,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=DECIMAL}, #{loginName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{pwd,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -44,7 +44,7 @@
       <if test="id != null" >
         ID,
       </if>
-      <if test="login_name != null" >
+      <if test="loginName != null" >
         LOGIN_NAME,
       </if>
       <if test="name != null" >
@@ -62,10 +62,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
+        #{id,jdbcType=DECIMAL},
       </if>
-      <if test="login_name != null" >
-        #{login_name,jdbcType=VARCHAR},
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -84,8 +84,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="ry.model.User" >
     update TUSER
     <set >
-      <if test="login_name != null" >
-        LOGIN_NAME = #{login_name,jdbcType=VARCHAR},
+      <if test="loginName != null" >
+        LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         NAME = #{name,jdbcType=VARCHAR},
@@ -100,16 +100,16 @@
         UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="ry.model.User" >
     update TUSER
-    set LOGIN_NAME = #{login_name,jdbcType=VARCHAR},
+    set LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
       NAME = #{name,jdbcType=VARCHAR},
       PWD = #{pwd,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
   
   <select id="selectUserRole" parameterType="String" resultType="ry.model.UserRole">
@@ -119,7 +119,7 @@
 		tuser_trole.user_id
 	from
 		tuser_trole
-	where TUSER_TROLE.user_id =#{id,jdbcType=VARCHAR} 
+	where TUSER_TROLE.user_id =#{id,jdbcType=DECIMAL} 
   </select>
   
   <resultMap id="userResultMap" type="ry.model.User" extends="BaseResultMap" >

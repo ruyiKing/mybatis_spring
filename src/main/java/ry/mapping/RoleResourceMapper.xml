@@ -2,27 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="ry.dao.RoleResourceMapper" >
   <resultMap id="BaseResultMap" type="ry.model.RoleResource" >
-    <id column="ID" property="id" jdbcType="VARCHAR" />
-    <result column="RESOURCE_ID" property="resourceId" jdbcType="VARCHAR" />
-    <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="RESOURCE_ID" property="resourceId" jdbcType="DECIMAL" />
+    <result column="ROLE_ID" property="roleId" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Base_Column_List" >
     ID, RESOURCE_ID, ROLE_ID
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from TROLE_TRESOURCE
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from TROLE_TRESOURCE
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="ry.model.RoleResource" >
     insert into TROLE_TRESOURCE (ID, RESOURCE_ID, ROLE_ID
       )
-    values (#{id,jdbcType=VARCHAR}, #{resourceId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}
+    values (#{id,jdbcType=DECIMAL}, #{resourceId,jdbcType=DECIMAL}, #{roleId,jdbcType=DECIMAL}
       )
   </insert>
   <insert id="insertSelective" parameterType="ry.model.RoleResource" >
@@ -40,13 +40,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
+        #{id,jdbcType=DECIMAL},
       </if>
       <if test="resourceId != null" >
-        #{resourceId,jdbcType=VARCHAR},
+        #{resourceId,jdbcType=DECIMAL},
       </if>
       <if test="roleId != null" >
-        #{roleId,jdbcType=VARCHAR},
+        #{roleId,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -54,18 +54,18 @@
     update TROLE_TRESOURCE
     <set >
       <if test="resourceId != null" >
-        RESOURCE_ID = #{resourceId,jdbcType=VARCHAR},
+        RESOURCE_ID = #{resourceId,jdbcType=DECIMAL},
       </if>
       <if test="roleId != null" >
-        ROLE_ID = #{roleId,jdbcType=VARCHAR},
+        ROLE_ID = #{roleId,jdbcType=DECIMAL},
       </if>
     </set>
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="ry.model.RoleResource" >
     update TROLE_TRESOURCE
-    set RESOURCE_ID = #{resourceId,jdbcType=VARCHAR},
-      ROLE_ID = #{roleId,jdbcType=VARCHAR}
-    where ID = #{id,jdbcType=VARCHAR}
+    set RESOURCE_ID = #{resourceId,jdbcType=DECIMAL},
+      ROLE_ID = #{roleId,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
 </mapper>

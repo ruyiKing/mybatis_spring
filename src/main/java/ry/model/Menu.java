@@ -3,7 +3,7 @@ package ry.model;
 import java.math.BigDecimal;
 
 public class Menu {
-    private String id;
+    private Long id;
 
     private String iconcls;
 
@@ -15,12 +15,12 @@ public class Menu {
 
     private String pid;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getIconcls() {

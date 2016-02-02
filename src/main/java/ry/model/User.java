@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 public class User {
-    private String id;
-    
-    private String login_name;
+    private Long id;
+
+    private String loginName;
 
     private String name;
 
@@ -26,12 +26,12 @@ public class User {
 		this.userRoles = userRoles;
 	}
 
-	public String getId() {
-        return id;
+    public String getLoginName() {
+        return loginName;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setLoginName(String loginName) {
+        this.loginName = loginName == null ? null : loginName.trim();
     }
 
     public String getName() {
@@ -65,18 +65,16 @@ public class User {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
-    
-	public String getLogin_name() {
-		return login_name;
-	}
-
-	public void setLogin_name(String login_name) {
-		this.login_name = login_name;
-	}
-	
 	
 	public String toString() {
         return getClass().getName() + ":" + name;
     }
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

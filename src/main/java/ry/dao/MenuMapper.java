@@ -3,13 +3,13 @@ package ry.dao;
 import ry.model.Menu;
 
 public interface MenuMapper {
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Menu record);
 
     int insertSelective(Menu record);
 
-    Menu selectByPrimaryKey(String id);
+    Menu selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(Menu record);
 

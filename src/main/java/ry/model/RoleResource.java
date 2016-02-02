@@ -1,33 +1,33 @@
 package ry.model;
 
 public class RoleResource {
-    private String id;
+    private Long id;
 
-    private String resourceId;
+    private Long resourceId;
 
-    private String roleId;
+    private Long roleId;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getResourceId() {
+    public Long getResourceId() {
         return resourceId;
     }
 
-    public void setResourceId(String resourceId) {
-        this.resourceId = resourceId == null ? null : resourceId.trim();
+    public void setResourceId(Long resourceId) {
+        this.resourceId = resourceId;
     }
 
-    public String getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId == null ? null : roleId.trim();
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 }

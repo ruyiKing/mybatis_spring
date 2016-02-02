@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="ry.dao.OnlineMapper" >
   <resultMap id="BaseResultMap" type="ry.model.Online" >
-    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <id column="ID" property="id" jdbcType="DECIMAL" />
     <result column="IP" property="ip" jdbcType="VARCHAR" />
     <result column="LOGINDATETIME" property="logindatetime" jdbcType="TIMESTAMP" />
     <result column="LOGINNAME" property="loginname" jdbcType="VARCHAR" />
@@ -10,20 +10,20 @@
   <sql id="Base_Column_List" >
     ID, IP, LOGINDATETIME, LOGINNAME
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from TONLINE
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from TONLINE
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="ry.model.Online" >
     insert into TONLINE (ID, IP, LOGINDATETIME, 
       LOGINNAME)
-    values (#{id,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{logindatetime,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=DECIMAL}, #{ip,jdbcType=VARCHAR}, #{logindatetime,jdbcType=TIMESTAMP}, 
       #{loginname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="ry.model.Online" >
@@ -44,7 +44,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
+        #{id,jdbcType=DECIMAL},
       </if>
       <if test="ip != null" >
         #{ip,jdbcType=VARCHAR},
@@ -70,13 +70,13 @@
         LOGINNAME = #{loginname,jdbcType=VARCHAR},
       </if>
     </set>
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="ry.model.Online" >
     update TONLINE
     set IP = #{ip,jdbcType=VARCHAR},
       LOGINDATETIME = #{logindatetime,jdbcType=TIMESTAMP},
       LOGINNAME = #{loginname,jdbcType=VARCHAR}
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
 </mapper>

@@ -3,13 +3,13 @@ package ry.dao;
 import ry.model.Resource;
 
 public interface ResourceMapper {
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Resource record);
 
     int insertSelective(Resource record);
 
-    Resource selectByPrimaryKey(String id);
+    Resource selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(Resource record);
 

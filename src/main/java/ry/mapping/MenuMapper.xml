@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="ry.dao.MenuMapper" >
   <resultMap id="BaseResultMap" type="ry.model.Menu" >
-    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <id column="ID" property="id" jdbcType="DECIMAL" />
     <result column="ICONCLS" property="iconcls" jdbcType="VARCHAR" />
     <result column="SEQ" property="seq" jdbcType="DECIMAL" />
     <result column="TEXT" property="text" jdbcType="VARCHAR" />
@@ -12,20 +12,20 @@
   <sql id="Base_Column_List" >
     ID, ICONCLS, SEQ, TEXT, URL, PID
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from TMENU
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from TMENU
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="ry.model.Menu" >
     insert into TMENU (ID, ICONCLS, SEQ, 
       TEXT, URL, PID)
-    values (#{id,jdbcType=VARCHAR}, #{iconcls,jdbcType=VARCHAR}, #{seq,jdbcType=DECIMAL}, 
+    values (#{id,jdbcType=DECIMAL}, #{iconcls,jdbcType=VARCHAR}, #{seq,jdbcType=DECIMAL}, 
       #{text,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="ry.model.Menu" >
@@ -52,7 +52,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
+        #{id,jdbcType=DECIMAL},
       </if>
       <if test="iconcls != null" >
         #{iconcls,jdbcType=VARCHAR},
@@ -90,7 +90,7 @@
         PID = #{pid,jdbcType=VARCHAR},
       </if>
     </set>
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="ry.model.Menu" >
     update TMENU
@@ -99,6 +99,6 @@
       TEXT = #{text,jdbcType=VARCHAR},
       URL = #{url,jdbcType=VARCHAR},
       PID = #{pid,jdbcType=VARCHAR}
-    where ID = #{id,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
 </mapper>

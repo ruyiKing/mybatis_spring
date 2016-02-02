@@ -5,13 +5,13 @@ import java.util.List;
 import ry.model.User;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(User record);
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(String id);
+    User selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(User record);
 

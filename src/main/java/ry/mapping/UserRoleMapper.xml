@@ -2,14 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="ry.dao.UserRoleMapper" >
   <resultMap id="BaseResultMap" type="ry.model.UserRole" >
-    <result column="ID" property="id" jdbcType="VARCHAR" />
-    <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
-    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="ROLE_ID" property="roleId" jdbcType="DECIMAL" />
+    <result column="USER_ID" property="userId" jdbcType="DECIMAL" />
   </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ROLE_ID, USER_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from TUSER_TROLE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from TUSER_TROLE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
   <insert id="insert" parameterType="ry.model.UserRole" >
     insert into TUSER_TROLE (ID, ROLE_ID, USER_ID
       )
-    values (#{id,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}
+    values (#{id,jdbcType=DECIMAL}, #{roleId,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}
       )
   </insert>
   <insert id="insertSelective" parameterType="ry.model.UserRole" >
@@ -27,14 +40,32 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
+        #{id,jdbcType=DECIMAL},
       </if>
       <if test="roleId != null" >
-        #{roleId,jdbcType=VARCHAR},
+        #{roleId,jdbcType=DECIMAL},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
+        #{userId,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ry.model.UserRole" >
+    update TUSER_TROLE
+    <set >
+      <if test="roleId != null" >
+        ROLE_ID = #{roleId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ry.model.UserRole" >
+    update TUSER_TROLE
+    set ROLE_ID = #{roleId,jdbcType=DECIMAL},
+      USER_ID = #{userId,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
 </mapper>
