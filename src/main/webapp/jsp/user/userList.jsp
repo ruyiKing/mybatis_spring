@@ -39,7 +39,7 @@
             <tr>
                 <th field="id" width="50">序号</th>
                 <th field="name" width="50">用户名</th>
-                <th field="login_name" width="50">登录名</th>
+                <th field="loginName" width="50">登录名</th>
                 <th field="createTime" width="50">创建日期</th>
                 <th field="updateTime" width="50">更新日期</th>
             </tr>
@@ -56,7 +56,7 @@
             </div>
             <div class="fitem">
                 <label>登录名:</label>
-                <input name="login_name" class="easyui-textbox" required="true">
+                <input name="loginName" class="easyui-textbox" required="true">
             </div>
             <div class="fitem">
                 <label>密码:</label>

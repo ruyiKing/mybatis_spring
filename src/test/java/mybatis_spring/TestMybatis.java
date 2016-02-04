@@ -30,7 +30,6 @@ public class TestMybatis {
 	@Test
 	public void test1(){
 		User u = userService.findUserById(1l);
-		System.out.println(u.getName());
 		logger.info(JSON.toJSONStringWithDateFormat(u, "yyyy-MM-dd"));
 		/*String s = userService.getuserid("1");
 		System.out.println(s);*/
@@ -58,9 +57,16 @@ public class TestMybatis {
 		int c = 0;
 		for(int i = 1;i<=10000;i++){
 			User user = new User();
-			user.setId(Long.valueOf(i));
-			user.setName("赵"+String.valueOf(i));
-			user.setLoginName("zhao"+String.valueOf(i));
+			if(i<=2000){
+				user.setName("赵"+String.valueOf(i));
+				user.setLoginName("zhao"+String.valueOf(i));
+			}else if(i>2000 && i<=3000){
+				user.setName("田"+String.valueOf(i));
+				user.setLoginName("tian"+String.valueOf(i));
+			}else {
+				user.setName("严"+String.valueOf(i));
+				user.setLoginName("yan"+String.valueOf(i));
+			}
 			user.setPwd("123456");
 			user.setUpdateTime(new Date());
 			user.setCreateTime(new Date());

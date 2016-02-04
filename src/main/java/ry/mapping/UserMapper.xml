@@ -30,13 +30,21 @@
     delete from TUSER
     where ID = #{id,jdbcType=DECIMAL}
   </delete>
-  <insert id="insert" parameterType="ry.model.User" >
+  
+  <insert id="insert" parameterType="ry.model.User"  >
+    
+    <selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="id"> 
+		SELECT seq_tuser.NEXTVAL FROM DUAL 
+	</selectKey>
+    
     insert into TUSER (ID, LOGIN_NAME, NAME, 
       PWD, CREATE_TIME, UPDATE_TIME
       )
-    values (#{id,jdbcType=DECIMAL}, #{loginName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=DECIMAL},#{loginName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{pwd,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
+      
+
   </insert>
   <insert id="insertSelective" parameterType="ry.model.User" >
     insert into TUSER
