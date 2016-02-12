@@ -19,11 +19,32 @@
     where ID = #{id,jdbcType=DECIMAL}
   </select>
   
-  <select id="selectByParameter" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByParameter" resultMap="BaseResultMap" parameterType="java.util.Map" >
     select 
     <include refid="Base_Column_List" />
     from TUSER
-    where NAME = #{name,jdbcType=VARCHAR}
+    where NAME = #{userName,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getAll" resultMap="BaseResultMap" parameterType="java.util.Map">
+  	
+    <![CDATA[ 
+	 SELECT ATUSER.ID ID,
+       ATUSER.NAME NAME,
+       ATUSER.LOGIN_NAME  LOGIN_NAME,
+       ATUSER.PWD,
+       ATUSER.CREATE_TIME CREATE_TIME,
+       ATUSER.UPDATE_TIME UPDATE_TIME
+	 FROM (SELECT A.*, ROWNUM RN
+	          FROM (SELECT * FROM TUSER) A
+	         WHERE ROWNUM <= #{end, jdbcType = INTEGER}) ATUSER
+	 WHERE RN >= #{begin, jdbcType = INTEGER}   
+    ]]> 
+  	
+  </select>
+  
+  <select id="getAllCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+	 SELECT count(*) FROM TUSER
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
@@ -134,14 +155,10 @@
     <collection property="userRoles" column="ID" javaType="list" select="selectUserRole"></collection>
   </resultMap>
   
-  <select id="getAll" resultMap="userResultMap">
-  select * from tuser
-  </select>
-  
   <select id="getAll2" resultMap="userResultMap2">
 	  select
 		tuser.id,
-		tuser.login_name
+		tuser.login_name,
 		tuser.name,
 		tuser.pwd,
 		tuser.create_time,

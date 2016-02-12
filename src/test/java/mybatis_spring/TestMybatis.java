@@ -1,7 +1,9 @@
 package mybatis_spring;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -37,7 +39,10 @@ public class TestMybatis {
 
 	@Test
 	public void test2() {
-		List<User> list=userService.getAll();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pageSize", 10);  
+		map.put("pageIndex", 0);
+		List<User> list=userService.getAll(map);
 		logger.info(JSON.toJSONStringWithDateFormat(list, "yyyy-MM-dd"));
 	}
 	
@@ -52,29 +57,29 @@ public class TestMybatis {
 //			
 //		}
 //	}
-	@Test
-	public void addUser() {
-		int c = 0;
-		for(int i = 1;i<=10000;i++){
-			User user = new User();
-			if(i<=2000){
-				user.setName("赵"+String.valueOf(i));
-				user.setLoginName("zhao"+String.valueOf(i));
-			}else if(i>2000 && i<=3000){
-				user.setName("田"+String.valueOf(i));
-				user.setLoginName("tian"+String.valueOf(i));
-			}else {
-				user.setName("严"+String.valueOf(i));
-				user.setLoginName("yan"+String.valueOf(i));
-			}
-			user.setPwd("123456");
-			user.setUpdateTime(new Date());
-			user.setCreateTime(new Date());
-			int iuser = userService.addUsers(user);
-			c += iuser;
-		}
-		logger.info("插入"+c+"个用户。");
-	}
+//	@Test
+//	public void addUser() {
+//		int c = 0;
+//		for(int i = 1;i<=10000;i++){
+//			User user = new User();
+//			if(i<=2000){
+//				user.setName("赵"+String.valueOf(i));
+//				user.setLoginName("zhao"+String.valueOf(i));
+//			}else if(i>2000 && i<=3000){
+//				user.setName("田"+String.valueOf(i));
+//				user.setLoginName("tian"+String.valueOf(i));
+//			}else {
+//				user.setName("严"+String.valueOf(i));
+//				user.setLoginName("yan"+String.valueOf(i));
+//			}
+//			user.setPwd("123456");
+//			user.setUpdateTime(new Date());
+//			user.setCreateTime(new Date());
+//			int iuser = userService.addUsers(user);
+//			c += iuser;
+//		}
+//		logger.info("插入"+c+"个用户。");
+//	}
 	
 	@Test
 	public void test4() {

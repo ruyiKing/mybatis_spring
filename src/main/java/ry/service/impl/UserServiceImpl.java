@@ -1,6 +1,7 @@
 package ry.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getAll() {
-		return userMapper.getAll();
+	public List<User> getAll(Map<String, Object> map) {
+		return userMapper.getAll(map);
 	}
 
 	@Override
@@ -36,13 +37,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> findUserByName(String userName) {
-		return userMapper.selectByParameter(userName);
+	public List<User> findUserByName(Map<String, Object> map) {
+		return userMapper.selectByParameter(map);
 	}
 
 	@Override
 	public int addUsers(User user) {
 		return userMapper.insert(user);
+	}
+
+	@Override
+	public Integer getAllCount() {
+		return userMapper.getAllCount();
 	}
 
 

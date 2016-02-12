@@ -1,6 +1,7 @@
 package ry.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import ry.model.User;
 
@@ -17,9 +18,11 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-	List<User> getAll();
+	List<User> getAll(Map<String, Object> map);
 
 	List<User> getAll2();
 
-	List<User> selectByParameter(String userName);
+	List<User> selectByParameter(Map<String, Object> map);
+
+	Integer getAllCount();
 }
