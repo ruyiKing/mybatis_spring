@@ -36,7 +36,7 @@
        ATUSER.CREATE_TIME CREATE_TIME,
        ATUSER.UPDATE_TIME UPDATE_TIME
 	 FROM (SELECT A.*, ROWNUM RN
-	          FROM (SELECT * FROM TUSER) A
+	          FROM (SELECT * FROM TUSER ORDER BY ID DESC) A
 	         WHERE ROWNUM <= #{end, jdbcType = INTEGER}) ATUSER
 	 WHERE RN >= #{begin, jdbcType = INTEGER}   
     ]]> 
