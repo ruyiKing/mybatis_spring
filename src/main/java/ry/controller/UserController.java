@@ -64,7 +64,9 @@ public class UserController {
 		if(userName!=null && userName!=""){
 			finduserList=userService.findUserByName(map);
 		}else {
+			logger.info("查询总条数begin...");
 			count = userService.getAllCount();
+			logger.info("查询总条数end...");
 			finduserList=userService.getAll(map);
 		}
 		JSONObject result = new JSONObject();  

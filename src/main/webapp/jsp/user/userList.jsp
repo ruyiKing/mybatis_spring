@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>用户列表</title>
-	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/js/easyui-1.4.4/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="/js/easyui-1.4.4/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="/js/easyui-1.4.4/themes/color.css">
     <link rel="stylesheet" type="text/css" href="/js/easyui-1.4.4/demo/demo.css">
