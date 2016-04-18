@@ -11,6 +11,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSON;
 
@@ -21,6 +23,8 @@ import ry.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring.xml", "classpath:spring-mybatis.xml" })
+@Transactional
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
 public class TestMybatis {
 	private static final Logger logger = Logger.getLogger(TestMybatis.class);	
 	@Autowired
@@ -60,7 +64,7 @@ public class TestMybatis {
 //	@Test
 //	public void addUser() {
 //		int c = 0;
-//		for(int i = 1;i<=10000;i++){
+//		for(int i = 10001;i<=1000000;i++){
 //			User user = new User();
 //			if(i<=2000){
 //				user.setName("赵"+String.valueOf(i));
