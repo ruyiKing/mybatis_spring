@@ -27,7 +27,9 @@ ul, ul li {
 
 /*网站头部*/
 .col960 {
-	width:960px;
+	/* width:960px; */
+	text-align:left;
+	padding:0 0px 0 40px;
 	margin:auto;
 }
 .navbg {

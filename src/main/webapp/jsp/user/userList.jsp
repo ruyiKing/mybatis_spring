@@ -13,14 +13,14 @@
     <script type="text/javascript" src="/js/easyui-1.4.4/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="/js/easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 </head>
-<body class="easyui-layout" title="用户列表"  style="margin: 20px;">
+<body class="easyui-layout"  style="margin: 20px;">
 
 <!-- style="margin:20px 0;text-align: right;" -->
-	<div style="margin-bottom: 50px;margin-top: 50px;" >
+	<div style="margin-bottom: 20px;margin-top: 50px;" >
 		<form action="<%=request.getContextPath() %>/user/finduserList.do" method="post" id="queryForm" name="queryForm">
 			<table>
 				<input type="text" name="queryUserName" id="queryUserName"  style="margin: 20px;" class="easyui-textbox" value="">
-				<a href="#" id="onclick" style="margin: 20px;" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px" onclick="doSearch()">Search</a>
+				<a href="#" id="onclick" style="margin: 20px;" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px" onclick="doSearch()">查询</a>
 			</table>
 		</form>
 	</div>
@@ -31,7 +31,7 @@
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除用户</a>
     </div>
         
-    <table id="dg" title="用户列表" class="easyui-datagrid" style="width:100%;height:350px;"
+    <table id="dg" title="用户列表" class="easyui-datagrid" style="width:100%;height:365px;"
             url="<%=request.getContextPath() %>/user/finduserList.do"
             toolbar="#toolbar" pagination="true"
             rownumbers="true" fitColumns="true" singleSelect="true">
@@ -46,7 +46,7 @@
         </thead>
     </table>
    
-    
+    <!-- 新增、 更新 -->
     <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"  closed="true" buttons="#dlg-buttons">
         <div class="ftitle">用户信息</div>
         <form id="fm" method="post" novalidate>            
@@ -77,7 +77,7 @@
                 }
             });
 	    });
-	    
+	    //查询
     	function doSearch(value){
     		var params = $('#dg').datagrid('options').queryParams; //先取得 datagrid 的查询参数  
             var fields =$('#queryForm').serializeArray(); //自动序列化表单元素为JSON对象  
@@ -88,11 +88,13 @@
 	    }
 
         var url;
+        //新增
         function newUser(){
             $('#dlg').dialog('open').dialog('center').dialog('setTitle','新建用户');
             $('#fm').form('clear');
             url = 'save_user.php';
         }
+        //修改
         function editUser(){
             var row = $('#dg').datagrid('getSelected');
             if (row){
