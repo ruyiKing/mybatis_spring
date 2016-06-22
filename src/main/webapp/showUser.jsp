@@ -5,6 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>${user.name}
+<body>欢迎：${user.name}
 </body>
 </html>

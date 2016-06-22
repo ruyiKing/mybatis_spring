@@ -19,13 +19,15 @@
 		<div class="navbg">
 			<div class="col960">
 				<ul id="navul" class="cl">
-					<li class="navhome"><a href="" target="_blank">HOME</a></li>
+					<li class="navhome"><a id="home" name="home" href="" target="_self">HOME</a></li>
 					<li><a href="" title="系统管理">系统管理</a>
 						<ul>
-							<li><a href="<%=request.getContextPath()%>/user/userList.do"
-								title="用户管理">用户管理</a></li>
-							<li><a href="http://sc.chinaz.com" title="HTML5">HTML5</a></li>
-						</ul></li>
+							<li>
+								<a name="user" id="user"  title="用户管理1">用户管理</a>
+							</li>
+							<li><a name="html5" id="html5" title="HTML5">HTML5</a></li>
+						</ul>
+					</li>
 					<!-- <li><a href="http://sc.chinaz.com" title="CSS">CSS</a>
 						<ul>
 							<li><a href="http://sc.chinaz.com" title="CSS入门">CSS入门</a></li>
@@ -61,36 +63,30 @@
 							<li><a href="http://sc.chinaz.com" title="布局技巧">布局技巧</a></li>
 							<li><a href="http://sc.chinaz.com" title="网页字体">网页字体</a></li>
 							<li><a href="http://sc.chinaz.com" title="flash">flash</a></li>
-						</ul></li>
-					<li><a href="http://sc.chinaz.com" title="杂七杂八">杂七杂八</a>
-						<ul>
-							<li><a href="http://sc.chinaz.com" title="帝国cms">帝国cms</a></li>
-							<li><a href="http://sc.chinaz.com" title="电脑技巧">电脑技巧</a></li>
-							<li><a href="http://sc.chinaz.com" title="随笔杂谈">随笔杂谈</a></li>
-						</ul></li>
-					<li><a href="http://sc.chinaz.com" title="Javascript">Javascript</a>
-						<ul>
-							<li><a href="http://sc.chinaz.com" title="Jquery">Jquery</a></li>
-							<li><a href="http://sc.chinaz.com" title="Js学习">Js学习</a></li>
-							<li><a href="http://sc.chinaz.com" title="Js教程">Js教程</a></li>
-						</ul></li>
-					<li><a href="http://sc.chinaz.com" title="网站优化">网站优化</a>
-						<ul>
-							<li><a href="http://sc.chinaz.com" title="SEO杂谈">SEO杂谈</a></li>
-							<li><a href="http://sc.chinaz.com" title="站长工具">站长工具</a></li>
-							<li><a href="http://sc.chinaz.com" title="经验分享">经验分享</a></li>
 						</ul></li> -->
 				</ul>
 			</div>
 		</div>
 		<script type="text/javascript">
 			$(".navbg").capacityFixed();
+
+			$(document).ready(function() {
+
+				$("#user").click(function(){
+					var url="<%=request.getContextPath()%>/user/userList.do";
+					window.frames["_mainArea"].location.replace(url);
+				});
+
+				$("#html5").click(function(){
+					var url="http://sc.chinaz.com/jiaoben/130531502630.htm";
+					window.frames["_mainArea"].location.replace(url);
+				});
+			});
 		</script>
 		<div style="text-align: left; clear: both">
-	
-			<iframe id="" src="<%=request.getContextPath()%>/user/userList.do"
-				width="100%" height="800" scrolling="auto">
-				脚本之家使用了框架技术，但是您的浏览器不支持框架，请升级您的浏览器以便正常访问脚本之家。 </iframe>
+
+				<iframe id='_mainArea' name="_mainArea" frameborder="0" width="100%"
+						height="800" src='<%=request.getContextPath()%>/user/showUser.do' scrolling="auto"></iframe>
 	
 		</div>
 	</body>
