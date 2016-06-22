@@ -6,6 +6,7 @@
 		<meta charset="UTF-8">
 		<title>系统主页</title>
 		<!-- demo url：http://sc.chinaz.com/jiaobendemo.aspx?downloadid=13531152150403 -->
+		<!-- http://sc.chinaz.com/jiaoben/130531502630.htm -->
 		<link href="css/main.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="js/jquery1.11.3.min.js"></script>
 		<script type="text/javascript" src="js/main_work.js"></script>
@@ -87,7 +88,7 @@
 		</script>
 		<div style="text-align: left; clear: both">
 	
-			<iframe src="<%=request.getContextPath()%>/user/userList.do"
+			<iframe id="" src="<%=request.getContextPath()%>/user/userList.do"
 				width="100%" height="800" scrolling="auto">
 				脚本之家使用了框架技术，但是您的浏览器不支持框架，请升级您的浏览器以便正常访问脚本之家。 </iframe>
 	
