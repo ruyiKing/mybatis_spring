@@ -86,11 +86,12 @@ alter table TROLE_TRESOURCE
 create table TUSER
 (
   id          VARCHAR2(36) not null,
+  login_name VARCHAR2(100),
   name        VARCHAR2(100),
   pwd         VARCHAR2(50),
   create_time TIMESTAMP(6),
   update_time TIMESTAMP(6)
-)
+);
 alter table TUSER
   add primary key (ID)
   using index ;
@@ -111,4 +112,55 @@ alter table TUSER_TROLE
 alter table TUSER_TROLE
   add foreign key (ROLE_ID)
   references TROLE (ID) on delete set null;
+
+-- Create sequence
+create sequence seq_tuser
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+create sequence seq_tusertrole
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+create sequence seq_trole
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+create sequence seq_tmenu
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+create sequence seq_tbug
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+create sequence seq_tonline
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+
+create sequence seq_tresource
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
 

@@ -3,8 +3,9 @@ package ry.dao;
 import java.util.List;
 import java.util.Map;
 
+import ry.annotation.MybatisDateBaseOracleOne;
 import ry.model.User;
-
+@MybatisDateBaseOracleOne
 public interface UserMapper {
     int deleteByPrimaryKey(Long id);
 

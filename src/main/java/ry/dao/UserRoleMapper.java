@@ -1,7 +1,8 @@
 package ry.dao;
 
+import ry.annotation.MybatisDateBaseOracleOne;
 import ry.model.UserRole;
-
+@MybatisDateBaseOracleOne
 public interface UserRoleMapper {
     int deleteByPrimaryKey(Long id);
 

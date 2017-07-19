@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ry.dao.SysPermItemMapper" >
+  <resultMap id="BaseResultMap" type="ry.model.SysPermItem" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="IDX" property="idx" jdbcType="DECIMAL" />
+    <result column="PARENT_ID" property="parentId" jdbcType="DECIMAL" />
+    <result column="PERM_LEVEL" property="permLevel" jdbcType="DECIMAL" />
+    <result column="PERM_NAME" property="permName" jdbcType="VARCHAR" />
+    <result column="PERM_URI" property="permUri" jdbcType="VARCHAR" />
+    <result column="SYS_TYPE" property="sysType" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, IDX, PARENT_ID, PERM_LEVEL, PERM_NAME, PERM_URI, SYS_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_PERM_ITEM
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from SYS_PERM_ITEM
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="ry.model.SysPermItem" >
+    insert into SYS_PERM_ITEM (ID, IDX, PARENT_ID, 
+      PERM_LEVEL, PERM_NAME, PERM_URI, 
+      SYS_TYPE)
+    values (#{id,jdbcType=DECIMAL}, #{idx,jdbcType=DECIMAL}, #{parentId,jdbcType=DECIMAL}, 
+      #{permLevel,jdbcType=DECIMAL}, #{permName,jdbcType=VARCHAR}, #{permUri,jdbcType=VARCHAR}, 
+      #{sysType,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="ry.model.SysPermItem" >
+    insert into SYS_PERM_ITEM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="idx != null" >
+        IDX,
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID,
+      </if>
+      <if test="permLevel != null" >
+        PERM_LEVEL,
+      </if>
+      <if test="permName != null" >
+        PERM_NAME,
+      </if>
+      <if test="permUri != null" >
+        PERM_URI,
+      </if>
+      <if test="sysType != null" >
+        SYS_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="idx != null" >
+        #{idx,jdbcType=DECIMAL},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=DECIMAL},
+      </if>
+      <if test="permLevel != null" >
+        #{permLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="permName != null" >
+        #{permName,jdbcType=VARCHAR},
+      </if>
+      <if test="permUri != null" >
+        #{permUri,jdbcType=VARCHAR},
+      </if>
+      <if test="sysType != null" >
+        #{sysType,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ry.model.SysPermItem" >
+    update SYS_PERM_ITEM
+    <set >
+      <if test="idx != null" >
+        IDX = #{idx,jdbcType=DECIMAL},
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      </if>
+      <if test="permLevel != null" >
+        PERM_LEVEL = #{permLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="permName != null" >
+        PERM_NAME = #{permName,jdbcType=VARCHAR},
+      </if>
+      <if test="permUri != null" >
+        PERM_URI = #{permUri,jdbcType=VARCHAR},
+      </if>
+      <if test="sysType != null" >
+        SYS_TYPE = #{sysType,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="ry.model.SysPermItem" >
+    update SYS_PERM_ITEM
+    set IDX = #{idx,jdbcType=DECIMAL},
+      PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      PERM_LEVEL = #{permLevel,jdbcType=DECIMAL},
+      PERM_NAME = #{permName,jdbcType=VARCHAR},
+      PERM_URI = #{permUri,jdbcType=VARCHAR},
+      SYS_TYPE = #{sysType,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>
