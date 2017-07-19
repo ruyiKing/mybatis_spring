@@ -7,6 +7,8 @@
 		<title>系统主页</title>
 		<!-- demo url：http://sc.chinaz.com/jiaobendemo.aspx?downloadid=13531152150403 -->
 		<!-- http://sc.chinaz.com/jiaoben/130531502630.htm -->
+        <%--浏览器图标--%>
+        <link rel="shortcut icon" type="image/x-icon" href="js/easyui-1.4.4/themes/icons/man.png" media="screen" />
 		<link href="css/main.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="js/jquery1.11.3.min.js"></script>
 		<script type="text/javascript" src="js/main_work.js"></script>
